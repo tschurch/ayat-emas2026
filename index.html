@@ -20,7 +20,7 @@
 
     .box{
       background: linear-gradient(180deg, #fff6e0, #f5e2b8);
-      padding: 40px;
+      padding: 42px;
       border-radius: 20px;
       max-width: 540px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.25);
@@ -31,36 +31,19 @@
       font-size: 14px;
       letter-spacing: 3px;
       color: #9b1c1c;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
       font-weight: bold;
     }
 
     .verse{
       font-size: 22px;
       line-height: 1.7;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .ref{
       font-weight: bold;
       color: #9b1c1c;
-      margin-bottom: 26px;
-    }
-
-    button{
-      padding: 10px 26px;
-      border: none;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #d4af37, #b8962e);
-      color: #7a0c1a;
-      font-size: 14px;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(212,175,55,0.6);
-      font-weight: bold;
-    }
-
-    button:hover{
-      opacity: 0.9;
     }
   </style>
 </head>
@@ -68,43 +51,60 @@
 <body>
 
   <div class="box">
-    <div class="title">AYAT EMAS IMLEK 
-      GBI TRUST SPIRIT</div>
+    <div class="title">AYAT EMAS IMLEK - GBI TRUST SPIRIT </div>
 
     <div class="verse" id="verse"></div>
     <div class="ref" id="ref"></div>
-
-    <button onclick="location.reload()">Ayat Berkat Baru 🧧</button>
   </div>
 
   <script>
     const verses = [
-      {
-        text: "TUHAN memberkati engkau dan melindungi engkau.",
-        ref: "Bilangan 6:24"
-      },
-      {
-        text: "Serahkanlah hidupmu kepada TUHAN dan percayalah kepada-Nya.",
-        ref: "Mazmur 37:5"
-      },
-      {
-        text: "Berbahagialah orang yang mengandalkan TUHAN.",
-        ref: "Yeremia 17:7"
-      },
-      {
-        text: "Kasih setia TUHAN tak berkesudahan.",
-        ref: "Ratapan 3:22"
-      },
-      {
-        text: "Aku mengetahui rancangan-rancangan apa yang ada pada-Ku mengenai kamu.",
-        ref: "Yeremia 29:11"
-      }
-    ];
+  { text: "TUHAN memberkati engkau dan melindungi engkau.", ref: "Bilangan 6:24" },
+  { text: "Berbahagialah orang yang mengandalkan TUHAN.", ref: "Yeremia 17:7" },
+  { text: "Serahkanlah hidupmu kepada TUHAN dan percayalah kepada-Nya.", ref: "Mazmur 37:5" },
+  { text: "Kasih setia TUHAN tak berkesudahan.", ref: "Ratapan 3:22" },
+  { text: "TUHAN adalah kekuatanku dan perisaiku.", ref: "Mazmur 28:7" },
+  { text: "TUHAN dekat kepada setiap orang yang berseru kepada-Nya.", ref: "Mazmur 145:18" },
+  { text: "Segala perkara dapat kutanggung di dalam Dia yang memberi kekuatan kepadaku.", ref: "Filipi 4:13" },
+  { text: "Allah turut bekerja dalam segala sesuatu untuk mendatangkan kebaikan.", ref: "Roma 8:28" },
+  { text: "TUHAN itu baik; Ia adalah tempat pengungsian pada waktu kesusahan.", ref: "Nahum 1:7" },
+  { text: "Sebab TUHANlah yang memberikan hikmat.", ref: "Amsal 2:6" },
+  { text: "Percayalah kepada TUHAN dengan segenap hatimu.", ref: "Amsal 3:5" },
+  { text: "Didiklah orang muda menurut jalan yang patut baginya.", ref: "Amsal 22:6" },
+  { text: "Hendaklah kamu ramah seorang terhadap yang lain.", ref: "Efesus 4:32" },
+  { text: "Segala sesuatu yang kamu perbuat, perbuatlah dengan kasih.", ref: "1 Korintus 16:14" },
+  { text: "Hendaklah kamu rendah hati seorang terhadap yang lain.", ref: "1 Petrus 5:5" },
+  { text: "Jagalah hatimu dengan segala kewaspadaan.", ref: "Amsal 4:23" },
+  { text: "Janganlah kamu khawatir tentang apa pun juga.", ref: "Filipi 4:6" },
+  { text: "Hendaklah hidupmu senantiasa penuh kasih karunia.", ref: "Kolose 4:6" },
+  { text: "Berbahagialah orang yang membawa damai.", ref: "Matius 5:9" },
+  { text: "Apa pun juga yang kamu perbuat, perbuatlah seperti untuk Tuhan.", ref: "Kolose 3:23" },
+  { text: "Janganlah kamu menjadi serupa dengan dunia ini.", ref: "Roma 12:2" },
+  { text: "TUHAN menguji hati dan batin manusia.", ref: "Mazmur 7:10" },
+  { text: "Lebih baik teguran yang nyata-nyata daripada kasih yang tersembunyi.", ref: "Amsal 27:5" },
+  { text: "Siapa mencintai didikan, mencintai pengetahuan.", ref: "Amsal 12:1" },
+  { text: "TUHAN menegur orang yang dikasihi-Nya.", ref: "Amsal 3:12" },
+  { text: "Hendaklah setiap orang cepat untuk mendengar, lambat untuk berkata-kata.", ref: "Yakobus 1:19" },
+  { text: "Pemeriksaan diri membawa kehidupan.", ref: "Amsal 15:31" },
+  { text: "Siapa menabur kejahatan akan menuai bencana.", ref: "Amsal 22:8" },
+  { text: "Didikan TUHAN tidak mendatangkan sukacita pada saat itu.", ref: "Ibrani 12:11" },
+  { text: "Lebih baik orang yang sabar daripada pahlawan.", ref: "Amsal 16:32" },
+  { text: "Takut akan TUHAN adalah permulaan pengetahuan.", ref: "Amsal 1:7" },
+  { text: "Orang yang setia kepada Tuhan akan diberkati.", ref: "Mazmur 112:1" },
+  { text: "TUHAN mengenal jalan orang benar.", ref: "Mazmur 1:6" },
+  { text: "Hidup orang benar adalah pelita yang bercahaya.", ref: "Amsal 13:9" },
+  { text: "Carilah dahulu Kerajaan Allah.", ref: "Matius 6:33" },
+  { text: "Jalan TUHAN adalah kekuatan bagi orang yang tidak bercela.", ref: "Amsal 10:29" },
+  { text: "TUHAN memberikan damai sejahtera kepada umat-Nya.", ref: "Mazmur 29:11" },
+  { text: "Hendaklah kasih dan kesetiaan jangan meninggalkan engkau.", ref: "Amsal 3:3" },
+  { text: "TUHAN menuntun orang yang rendah hati.", ref: "Mazmur 25:9" },
+  { text: "Orang yang hidup benar akan berbuah pada waktunya.", ref: "Mazmur 1:3" }
+];
 
-    const randomIndex = Math.floor(Math.random() * verses.length);
-    document.getElementById("verse").innerText = verses[randomIndex].text;
-    document.getElementById("ref").innerText = verses[randomIndex].ref;
-  </script>
+const randomIndex = Math.floor(Math.random() * verses.length);
+document.getElementById("verse").innerText = verses[randomIndex].text;
+document.getElementById("ref").innerText = verses[randomIndex].ref;
+</script>
 
 </body>
 </html>
