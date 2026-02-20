@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Ayat Emas Hari Ini</title>
+
+  <!-- THEME: CHINESE BLESSING (IMLEK) -->
+  <style>
+    body{
+      background: radial-gradient(circle at top, #b11226, #7a0c1a);
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #3b1a0f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    .box{
+      background: linear-gradient(180deg, #fff6e0, #f5e2b8);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 540px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      border: 3px solid #d4af37;
+    }
+
+    .title{
+      font-size: 14px;
+      letter-spacing: 3px;
+      color: #9b1c1c;
+      margin-bottom: 18px;
+      font-weight: bold;
+    }
+
+    .verse{
+      font-size: 22px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .ref{
+      font-weight: bold;
+      color: #9b1c1c;
+      margin-bottom: 26px;
+    }
+
+    button{
+      padding: 10px 26px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #d4af37, #b8962e);
+      color: #7a0c1a;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(212,175,55,0.6);
+      font-weight: bold;
+    }
+
+    button:hover{
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <div class="title">AYAT EMAS IMLEK</div>
+
+    <div class="verse" id="verse"></div>
+    <div class="ref" id="ref"></div>
+
+    <button onclick="location.reload()">Ayat Berkat Baru 🧧</button>
+  </div>
+
+  <script>
+    const verses = [
+      {
+        text: "TUHAN memberkati engkau dan melindungi engkau.",
+        ref: "Bilangan 6:24"
+      },
+      {
+        text: "Serahkanlah hidupmu kepada TUHAN dan percayalah kepada-Nya.",
+        ref: "Mazmur 37:5"
+      },
+      {
+        text: "Berbahagialah orang yang mengandalkan TUHAN.",
+        ref: "Yeremia 17:7"
+      },
+      {
+        text: "Kasih setia TUHAN tak berkesudahan.",
+        ref: "Ratapan 3:22"
+      },
+      {
+        text: "Aku mengetahui rancangan-rancangan apa yang ada pada-Ku mengenai kamu.",
+        ref: "Yeremia 29:11"
+      }
+    ];
+
+    const randomIndex = Math.floor(Math.random() * verses.length);
+    document.getElementById("verse").innerText = verses[randomIndex].text;
+    document.getElementById("ref").innerText = verses[randomIndex].ref;
+  </script>
+
+</body>
+</html>
