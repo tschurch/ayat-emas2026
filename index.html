@@ -59,7 +59,7 @@ button:hover {
 </head>
 <body>
 
-<h1>✝️ AYAT EMAS PASKAH 2026 - GBI Trust Spirit</h1>
+<h1>AYAT EMAS PASKAH 2026 - GBI TRUST SPIRIT</h1>
 <div class="sub">He is Risen — Hope is Alive</div>
 
 <div class="ayat" id="ayat"></div>
@@ -164,10 +164,14 @@ const ayatList = [
 {ayat:"Berbahagialah orang yang kekuatannya di dalam Engkau.", ref:"Mazmur 84:5"},
 {ayat:"Orang yang menabur dengan mencucurkan air mata.", ref:"Mazmur 126:5-6"}
 ];
-const random = ayatList[Math.floor(Math.random() * ayatList.length)];
 
-document.getElementById("ayat").innerText = random.ayat;
-document.getElementById("ref").innerText = random.ref;
+function generateAyat() {
+  const random = ayatList[Math.floor(Math.random() * ayatList.length)];
+  document.getElementById("ayat").innerText = random.ayat;
+  document.getElementById("ref").innerText = random.ref;
+}
+
+generateAyat();
 </script>
 
 </body>
