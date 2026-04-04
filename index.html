@@ -3,156 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <title>Ayat Emas Hari Ini</title>
-
-  <!-- THEME: CHINESE BLESSING (IMLEK) -->
   <style>
-    body{
-      background: radial-gradient(circle at top, #b11226, #7a0c1a);
-      font-family: 'Georgia', 'Times New Roman', serif;
-      color: #3b1a0f;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
+    body {
+      font-family: Arial;
       text-align: center;
-    }
-
-    .box{
-      background: linear-gradient(180deg, #fff6e0, #f5e2b8);
       padding: 50px;
-      border-radius: 35px;
-      max-width: 540px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-      border: 5px solid #d4af37;
+      background: #f5f5f5;
     }
-
-    .title{
-      font-size: 20px;
-      letter-spacing: 0px;
-      color: #9b1c1c;
-      margin-bottom: 25px;
+    .ayat {
+      font-size: 24px;
+      margin: 20px;
+    }
+    .ref {
       font-weight: bold;
-    }
-
-    .verse{
-      font-size: 38px;
-      line-height: 1.3;
-      margin-bottom: 24px;
-    }
-
-    .ref{
-      font-weight: bold;
-      color: #9b1c1c;
     }
   </style>
 </head>
-
 <body>
 
-  <div class="box">
-    <div class="title">AYAT EMAS IMLEK 2026 - GBI TRUST SPIRIT</div>
-
-    <div class="verse" id="verse"></div>
-    <div class="ref" id="ref"></div>
-  </div>
-
+<h1>📖 Ayat Emas</h1>
+<div class="ayat" id="ayat"></div>
+<div class="ref" id="ref"></div>
 <script>
-const verses = [
-{ text: "TUHAN memberkati engkau dan melindungi engkau.", ref: "Bilangan 6:24" },
-{ text: "TUHAN menyertai engkau ke mana pun engkau pergi.", ref: "Yosua 1:9" },
-{ text: "TUHAN adalah gembalaku, takkan kekurangan aku.", ref: "Mazmur 23:1" },
-{ text: "Berbahagialah orang yang mengandalkan TUHAN.", ref: "Yeremia 17:7" },
-{ text: "Kasih setia TUHAN tak berkesudahan.", ref: "Ratapan 3:22" },
-{ text: "TUHAN adalah terang dan keselamatanku.", ref: "Mazmur 27:1" },
-{ text: "TUHAN dekat kepada orang yang berseru kepada-Nya.", ref: "Mazmur 145:18" },
-{ text: "TUHAN adalah tempat perlindungan dan kekuatan.", ref: "Mazmur 46:2" },
-{ text: "TUHAN itu baik, Ia adalah tempat pengungsian.", ref: "Nahum 1:7" },
-{ text: "TUHAN memberi kekuatan kepada umat-Nya.", ref: "Mazmur 29:11" },
-{ text: "TUHAN menuntun orang yang rendah hati.", ref: "Mazmur 25:9" },
-{ text: "TUHAN setia dalam segala perkataan-Nya.", ref: "Mazmur 145:13" },
-{ text: "TUHAN adalah penolongku, aku tidak akan takut.", ref: "Mazmur 118:6" },
-{ text: "TUHAN memelihara orang-orang yang setia.", ref: "Mazmur 31:24" },
-{ text: "TUHAN berkenan kepada orang yang berharap kepada-Nya.", ref: "Mazmur 147:11" },
-{ text: "TUHAN adalah perlindungan turun-temurun.", ref: "Mazmur 90:1" },
-{ text: "TUHAN memimpin aku di jalan kebenaran.", ref: "Mazmur 23:3" },
-{ text: "TUHAN mengangkat orang yang tertindas.", ref: "Mazmur 146:8" },
-{ text: "TUHAN menegakkan langkah orang yang hidupnya berkenan.", ref: "Mazmur 37:23" },
-{ text: "TUHAN akan menuntun engkau senantiasa.", ref: "Yesaya 58:11" },
-{ text: "Orang yang berharap kepada TUHAN mendapat kekuatan baru.", ref: "Yesaya 40:31" },
-{ text: "Jangan takut, sebab Aku menyertai engkau.", ref: "Yesaya 41:10" },
-{ text: "TUHAN memberikan damai sejahtera.", ref: "Mazmur 29:11" },
-{ text: "TUHAN adalah perisaiku.", ref: "Mazmur 28:7" },
-{ text: "TUHAN mengenal jalan orang benar.", ref: "Mazmur 1:6" },
-{ text: "TUHAN menjaga keluar masukmu.", ref: "Mazmur 121:8" },
-{ text: "TUHAN mengelilingi umat-Nya.", ref: "Mazmur 125:2" },
-{ text: "TUHAN menyertai orang yang tulus hati.", ref: "Amsal 11:20" },
-{ text: "TUHAN memberikan kemenangan.", ref: "1 Samuel 17:47" },
-{ text: "TUHAN adalah gunung batuku.", ref: "Mazmur 18:3" },
-{ text: "TUHAN melimpahi orang yang takut akan Dia.", ref: "Mazmur 31:20" },
-{ text: "TUHAN tidak pernah meninggalkan umat-Nya.", ref: "Ulangan 31:6" },
-{ text: "TUHAN menyimpan berkat bagi orang benar.", ref: "Amsal 10:6" },
-{ text: "TUHAN memberikan sukacita.", ref: "Mazmur 16:11" },
-{ text: "TUHAN memberi damai yang sempurna.", ref: "Yesaya 26:3" },
-{ text: "TUHAN adalah sumber kehidupan.", ref: "Mazmur 36:10" },
-{ text: "TUHAN mengaruniakan kasih setia-Nya.", ref: "Mazmur 117:2" },
-{ text: "TUHAN menghibur umat-Nya.", ref: "Yesaya 49:13" },
-{ text: "TUHAN memberkati pekerjaan tanganmu.", ref: "Ulangan 28:12" },
-{ text: "TUHAN melindungi orang yang berharap kepada-Nya.", ref: "Amsal 30:5" },
-{ text: "Berbahagialah orang yang takut akan TUHAN.", ref: "Mazmur 128:1" },
-{ text: "TUHAN memberkati rumah orang benar.", ref: "Amsal 3:33" },
-{ text: "Orang benar akan berbuah pada waktunya.", ref: "Mazmur 1:3" },
-{ text: "TUHAN memperpanjang umur orang benar.", ref: "Amsal 10:27" },
-{ text: "Orang yang setia mendatangkan banyak berkat.", ref: "Amsal 28:20" },
-{ text: "Hidup orang benar bercahaya.", ref: "Amsal 13:9" },
-{ text: "TUHAN menjaga keluarga orang yang takut akan Dia.", ref: "Mazmur 103:17" },
-{ text: "TUHAN mengokohkan keluarga yang takut akan Dia.", ref: "Mazmur 128:3" },
-{ text: "Kasih dan kesetiaan jangan meninggalkan engkau.", ref: "Amsal 3:3" },
-{ text: "TUHAN memberikan hari depan yang penuh harapan.", ref: "Yeremia 29:11" },
-{ text: "Orang yang berjalan jujur hidup aman.", ref: "Amsal 10:9" },
-{ text: "TUHAN memberi keberhasilan kepada orang bijak.", ref: "Pengkhotbah 10:10" },
-{ text: "Hikmat memberi kehidupan.", ref: "Pengkhotbah 7:12" },
-{ text: "TUHAN memberi kekayaan tanpa susah payah.", ref: "Amsal 10:22" },
-{ text: "TUHAN memperhatikan jalan orang benar.", ref: "Mazmur 37:18" },
-{ text: "TUHAN menaruh damai dalam keluarga.", ref: "Amsal 17:1" },
-{ text: "Orang yang murah hati diberkati.", ref: "Amsal 22:9" },
-{ text: "TUHAN mencurahkan berkat berkelimpahan.", ref: "Maleakhi 3:10" },
-{ text: "TUHAN membalas kebaikan dengan berkat.", ref: "Amsal 11:25" },
-{ text: "Damai sejahtera Allah memelihara hati.", ref: "Filipi 4:7" },
-{ text: "Allah turut bekerja mendatangkan kebaikan.", ref: "Roma 8:28" },
-{ text: "Pengharapan kepada Allah memberi sukacita.", ref: "Roma 15:13" },
-{ text: "Allah memberikan kekuatan baru.", ref: "Yesaya 40:31" },
-{ text: "Tuhan mencukupkan segala keperluanmu.", ref: "Filipi 4:19" },
-{ text: "Allah adalah sumber segala berkat.", ref: "Yakobus 1:17" },
-{ text: "Tuhan memberi hikmat dengan murah hati.", ref: "Yakobus 1:5" },
-{ text: "TUHAN memuaskan orang yang lapar dengan kebaikan.", ref: "Mazmur 107:9" },
-{ text: "TUHAN mencukupi segala keperluan umat-Nya.", ref: "Mazmur 34:10" },
-{ text: "TUHAN memberi kemenangan kepada yang berharap.", ref: "Mazmur 44:8" },
-{ text: "TUHAN memberi kekuatan bagi perjalanan hidup.", ref: "Mazmur 84:6" },
-{ text: "Kasih Allah dicurahkan ke dalam hati kita.", ref: "Roma 5:5" },
-{ text: "Tuhan memberi hidup berkelimpahan.", ref: "Yohanes 10:10" },
-{ text: "Allah setia memelihara umat-Nya.", ref: "1 Korintus 1:9" },
-{ text: "Tuhan mengaruniakan anugerah-Nya.", ref: "2 Korintus 12:9" },
-{ text: "Allah memberi kekuatan kepada yang lemah.", ref: "Yesaya 40:29" },
-{ text: "Tuhan menyertai orang yang rendah hati.", ref: "Yakobus 4:6" },
-{ text: "Allah memberi kemenangan melalui Kristus.", ref: "1 Korintus 15:57" },
-{ text: "Tuhan adalah sumber damai sejahtera.", ref: "Roma 15:33" },
-{ text: "Orang yang taat akan diberkati.", ref: "Ulangan 28:2" },
-{ text: "Takut akan TUHAN mendatangkan kehidupan.", ref: "Amsal 19:23" },
-{ text: "TUHAN menyertai orang yang jujur.", ref: "Amsal 11:3" },
-{ text: "Orang yang hidup benar dikenan TUHAN.", ref: "Amsal 12:2" },
-{ text: "TUHAN menjaga jalan orang benar.", ref: "Amsal 2:8" },
-{ text: "Orang yang rendah hati menerima kasih karunia.", ref: "1 Petrus 5:5" },
-{ text: "Tuhan memberi upah kepada yang setia.", ref: "Ibrani 11:6" },
-{ text: "Orang yang mencari Tuhan tidak kekurangan.", ref: "Mazmur 34:10" },
-{ text: "Tuhan memberkati orang yang hidup benar.", ref: "Mazmur 112:1" },
-{ text: "Tuhan melimpahkan berkat-Nya.", ref: "Efesus 1:3" }
-
+const ayatList = [
+{ayat:"TUHAN akan membuat musuhmu yang bangkit menyerang engkau terpukul kalah olehmu.", ref:"Ulangan 28:7"},
+{ayat:"TUHAN akan mengangkat engkau menjadi kepala dan bukan ekor.", ref:"Ulangan 28:13"},
+{ayat:"TUHAN akan membuka bagimu perbendaharaan-Nya yang melimpah.", ref:"Ulangan 28:12"},
+{ayat:"TUHAN akan menetapkan engkau sebagai umat yang kudus.", ref:"Ulangan 28:9"},
+{ayat:"TUHAN akan memerintahkan berkat atasmu dalam segala usahamu.", ref:"Ulangan 28:8"},
+{ayat:"Diberkatilah engkau pada waktu masuk dan keluar.", ref:"Ulangan 28:6"},
+{ayat:"Diberkatilah bakul dan tempat adonanmu.", ref:"Ulangan 28:5"},
+{ayat:"Diberkatilah hasil kandunganmu dan hasil tanahmu.", ref:"Ulangan 28:4"},
+{ayat:"Diberkatilah engkau di kota dan di ladang.", ref:"Ulangan 28:3"},
+{ayat:"Jika engkau mendengar suara TUHAN, segala berkat ini akan datang.", ref:"Ulangan 28:1"},
+{ayat:"TUHANlah yang memberi kekuatan kepadamu untuk memperoleh kekayaan.", ref:"Ulangan 8:18"},
+{ayat:"TUHAN memberkati engkau dan melindungi engkau.", ref:"Bilangan 6:24-26"},
+{ayat:"Berserulah kepada-Ku, maka Aku akan menjawab engkau.", ref:"Yeremia 33:3"},
+{ayat:"Aku tidak akan membiarkan engkau dan tidak akan meninggalkan engkau.", ref:"Yosua 1:5"},
+{ayat:"Kuatkan dan teguhkanlah hatimu.", ref:"Yosua 1:6"},
+{ayat:"Bertindaklah dengan sangat berani.", ref:"Yosua 1:7"},
+{ayat:"Kitab Taurat ini janganlah engkau lupakan.", ref:"Yosua 1:8"},
+{ayat:"Jangan takut dan jangan tawar hati.", ref:"Yosua 1:9"},
+{ayat:"Kuduskanlah dirimu, sebab TUHAN akan melakukan perbuatan ajaib.", ref:"Yosua 3:5"},
+{ayat:"Samuel makin besar dan TUHAN menyertainya.", ref:"1 Samuel 3:19"},
+{ayat:"Percayalah kepada TUHAN, maka kamu akan tetap teguh.", ref:"2 Tawarikh 20:20"},
+{ayat:"Diberkatilah orang yang mengandalkan TUHAN.", ref:"Yeremia 17:7-8"},
+{ayat:"Aku mengetahui rancangan damai sejahtera.", ref:"Yeremia 29:11"},
+{ayat:"Seperti pohon yang ditanam di tepi aliran air.", ref:"Mazmur 1:1-3"},
+{ayat:"Kiranya Ia mengingat segala persembahanmu.", ref:"Mazmur 20:3"},
+{ayat:"Serahkanlah perbuatanmu kepada TUHAN.", ref:"Amsal 16:3"},
+{ayat:"TUHAN menetapkan langkah orang.", ref:"Mazmur 37:23-24"},
+{ayat:"Barangsiapa percaya kepada-Nya tidak akan dipermalukan.", ref:"Roma 10:11"},
+{ayat:"Percayalah kepada TUHAN dengan segenap hatimu.", ref:"Amsal 3:5-6"},
+{ayat:"Serahkanlah segala kekuatiranmu kepada-Nya.", ref:"1 Petrus 5:7"},
+{ayat:"Serahkanlah bebanmu kepada TUHAN.", ref:"Mazmur 55:22"},
+{ayat:"Hari depan sungguh ada.", ref:"Amsal 23:18"},
+{ayat:"Allah turut bekerja dalam segala sesuatu.", ref:"Roma 8:28"},
+{ayat:"Ia mengangkat aku dari lumpur.", ref:"Mazmur 40:2"},
+{ayat:"Sesungguhnya Aku hendak membuat sesuatu yang baru.", ref:"Yesaya 43:19"},
+{ayat:"Allah setia dan tidak akan membiarkan kamu dicobai.", ref:"1 Korintus 10:13"},
+{ayat:"TUHAN menyertai engkau.", ref:"Ulangan 31:6"},
+{ayat:"TUHAN sendiri berjalan di depanmu.", ref:"Ulangan 31:8"},
+{ayat:"Aku telah membuka pintu bagimu.", ref:"Wahyu 3:8"},
+{ayat:"Allah sanggup melakukan jauh lebih banyak.", ref:"Efesus 3:20"},
+{ayat:"Kuatkanlah dirimu di dalam Tuhan.", ref:"Efesus 6:10"},
+{ayat:"TUHAN adalah kekuatanku dan perisaiku.", ref:"Mazmur 28:7"},
+{ayat:"Segala perkara dapat kutanggung.", ref:"Filipi 4:13"},
+{ayat:"Orang yang menanti-nantikan TUHAN mendapat kekuatan baru.", ref:"Yesaya 40:31"},
+{ayat:"TUHAN Allahku membuat kakiku seperti kaki rusa.", ref:"Habakuk 3:19"},
+{ayat:"Cukuplah kasih karunia-Ku bagimu.", ref:"2 Korintus 12:9"},
+{ayat:"Allah itu bagi kita tempat perlindungan.", ref:"Mazmur 46:2"},
+{ayat:"Sukacita TUHAN adalah kekuatanmu.", ref:"Nehemia 8:11"},
+{ayat:"Jangan takut, sebab Aku menyertai engkau.", ref:"Yesaya 41:10"},
+{ayat:"Pertolonganku ialah dari TUHAN.", ref:"Mazmur 121:1-2"},
+{ayat:"Tuhan adalah penolongku.", ref:"Ibrani 13:6"},
+{ayat:"Mengucap syukurlah dalam segala hal.", ref:"1 Tesalonika 5:18"},
+{ayat:"Janganlah khawatir tentang apapun juga.", ref:"Filipi 4:6-7"},
+{ayat:"Bersyukurlah kepada TUHAN.", ref:"Mazmur 107:1"},
+{ayat:"Lakukanlah segala sesuatu dalam nama Tuhan.", ref:"Kolose 3:17"},
+{ayat:"Apa yang tidak pernah dilihat mata.", ref:"1 Korintus 2:9"},
+{ayat:"Kita lebih dari pada pemenang.", ref:"Roma 8:37"},
+{ayat:"TUHAN berjalan menyertai kamu berperang.", ref:"Ulangan 20:4"},
+{ayat:"Syukur kepada Allah yang memberi kemenangan.", ref:"1 Korintus 15:57"},
+{ayat:"Dalam dunia kamu menderita, tetapi kuatkanlah hatimu.", ref:"Yohanes 16:33"},
+{ayat:"Dengan Allah kita lakukan perbuatan gagah.", ref:"Mazmur 108:13"},
+{ayat:"Berbahagialah orang yang bertahan dalam pencobaan.", ref:"Yakobus 1:12"},
+{ayat:"Iman adalah kemenangan.", ref:"1 Yohanes 5:4"},
+{ayat:"Aku menyertai kamu senantiasa.", ref:"Matius 28:20"},
+{ayat:"Sekalipun aku berjalan dalam lembah kekelaman.", ref:"Mazmur 23:4"},
+{ayat:"Aku akan menyertai dia dalam kesesakan.", ref:"Mazmur 91:15"},
+{ayat:"Tak berkesudahan kasih setia TUHAN.", ref:"Ratapan 3:22-23"},
+{ayat:"Kebajikan dan kemurahan belaka akan mengikuti aku.", ref:"Mazmur 23:6"},
+{ayat:"Aku senantiasa memandang kepada TUHAN.", ref:"Mazmur 16:8"},
+{ayat:"Sebelum engkau keluar dari kandungan, Aku telah mengenal engkau.", ref:"Yeremia 1:5"},
+{ayat:"Damai sejahtera Kutinggalkan bagimu.", ref:"Yohanes 14:27"},
+{ayat:"Apa saja yang kamu minta dalam doa.", ref:"Matius 21:22"},
+{ayat:"Hanya dekat Allah saja aku tenang.", ref:"Mazmur 62:9"},
+{ayat:"TUHAN itu baik.", ref:"Nahum 1:7"},
+{ayat:"Kami mengucap syukur kepada-Mu.", ref:"Wahyu 11:17"},
+{ayat:"Jangan khawatir akan hari esok.", ref:"Matius 6:34"},
+{ayat:"TUHAN melepaskan orang benar dari segala kesesakannya.", ref:"Mazmur 34:19"},
+{ayat:"Allah akan menyempurnakan kamu.", ref:"1 Petrus 5:10"},
+{ayat:"Mintalah, maka akan diberikan.", ref:"Matius 7:7"},
+{ayat:"Setiap orang yang meminta, menerima.", ref:"Matius 7:8"},
+{ayat:"Aku diam di tempat tinggi dan kudus.", ref:"Yesaya 57:15"},
+{ayat:"Carilah dahulu Kerajaan Allah.", ref:"Matius 6:33"},
+{ayat:"TUHAN adalah kekuatanku dan nyanyianku.", ref:"Keluaran 15:2"},
+{ayat:"Tuhan itu setia.", ref:"2 Tesalonika 3:3"},
+{ayat:"Allah memberikan roh kekuatan.", ref:"2 Timotius 1:7"},
+{ayat:"TUHAN memberi kekuatan kepada umat-Nya.", ref:"Mazmur 29:11"},
+{ayat:"Marilah kepada-Ku, semua yang letih lesu.", ref:"Matius 11:28"},
+{ayat:"TUHAN dekat kepada orang yang patah hati.", ref:"Mazmur 34:18"},
+{ayat:"Berbahagialah orang yang kekuatannya di dalam Engkau.", ref:"Mazmur 84:5"},
+{ayat:"Orang yang menabur dengan mencucurkan air mata.", ref:"Mazmur 126:5-6"}
 ];
+const random = ayatList[Math.floor(Math.random() * ayatList.length)];
 
-const randomIndex = Math.floor(Math.random() * verses.length);
-document.getElementById("verse").innerText = verses[randomIndex].text;
-document.getElementById("ref").innerText = verses[randomIndex].ref;
+document.getElementById("ayat").innerText = random.ayat;
+document.getElementById("ref").innerText = random.ref;
 </script>
 
 </body>
